@@ -1,171 +1,189 @@
 <!doctype html>
 <html lang="ru"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>kr1sspyGym</title><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="kr1sspyGym"><meta name="theme-color" content="#10a37f"><meta name="apple-mobile-web-app-status-bar-style" content="default"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png">
+<title>kr1sspyGym</title>
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="kr1sspyGym"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="theme-color" content="#0f1013">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png">
 <style>
-:root{--bg:#f4f6f8;--card:#fff;--tx:#14181f;--mu:#6b7380;--ac:#10a37f;--bd:#e2e6ea;--p:#3b82f6;--f:#f59e0b;--c:#ec4899;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1217;--card:#171d25;--tx:#eef1f5;--mu:#97a0ad;--bd:#28303b}}
-:root[data-theme="dark"]{--bg:#0e1217;--card:#171d25;--tx:#eef1f5;--mu:#97a0ad;--bd:#28303b}
-html{color-scheme:light dark}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-.w{max-width:560px;margin:0 auto;padding:12px 14px 40px}
-.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px;margin-top:12px}
-h2{font-size:15px;margin:0 0 10px;color:var(--mu);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.nav b{font-size:18px}
-button{font:inherit;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;padding:9px 13px;cursor:pointer}
-button.pr{background:var(--ac);border-color:var(--ac);color:#fff;font-weight:600}
-.tabs{display:flex;gap:6px;margin-top:12px}
-.tabs button{flex:1;font-weight:600;padding:9px 4px;font-size:14px}
-.tabs button.on{background:var(--ac);border-color:var(--ac);color:#fff}
-input,select,textarea{font:inherit;width:100%;padding:9px 10px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);min-width:0}
-label{font-size:12px;color:var(--mu);display:block;margin-bottom:3px}
-.g{display:grid;gap:8px}.g2{grid-template-columns:1fr 1fr}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}
-.big{font-size:34px;font-weight:700;line-height:1}
+:root{--bg:#0f1013;--c:#181a1f;--c2:#22252c;--b:#2b2f38;--tx:#f4f0e8;--mu:#9a9aa3;--a:#ff6a2b;--p:#7cc4ff;--f:#ffd166;--k:#b6e36b;--e:#ff4d4d;color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 ui-rounded,"SF Pro Rounded",-apple-system,system-ui,sans-serif}
+body{padding:calc(env(safe-area-inset-top,0px) + 12px) 14px calc(100px + env(safe-area-inset-bottom,0px))}
+.w{max-width:560px;margin:0 auto}
+header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4px}
+header small{color:var(--a);font-weight:800;font-size:14px}
+header h1{margin:0;font-size:28px;font-weight:800;letter-spacing:-.02em;text-transform:capitalize}
+.i{width:42px;height:42px;padding:0;border-radius:50%;font-size:20px;margin-left:6px}
+.c{background:var(--c);border:1px solid var(--b);border-radius:24px;padding:18px;margin-top:12px}
+.h{margin:0 0 12px;font-size:18px;font-weight:700}
+button{font:inherit;font-weight:600;color:var(--tx);background:var(--c2);border:1px solid var(--b);border-radius:14px;padding:11px 14px}
+button:active{transform:scale(.97)}
+.pr{background:var(--a);border:0;color:#1a0b03;font-weight:800}
+input,select,textarea{font:inherit;width:100%;min-width:0;padding:11px 12px;border:1px solid var(--b);border-radius:14px;background:var(--bg);color:var(--tx)}
+input:focus,select:focus{outline:2px solid var(--a);outline-offset:0}
+label{display:block;font-size:12px;color:var(--mu);margin:0 0 3px 2px}
+.g{display:grid;gap:8px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
 .mu{color:var(--mu);font-size:13px}
-.bar{height:8px;border-radius:5px;background:var(--bd);overflow:hidden;margin:4px 0 10px}
-.bar i{display:block;height:100%;border-radius:5px}
-.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 0;border-top:1px solid var(--bd)}
-.row:first-child{border-top:0}
-.x{border:0;background:none;color:var(--mu);padding:4px 8px;font-size:18px}
-.hide{display:none}
-.st{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
-.st div{background:var(--bg);border-radius:10px;padding:8px;text-align:center}
-.st b{display:block;font-size:18px}
-details summary{cursor:pointer;color:var(--mu);font-size:14px}
+.fl{display:flex;align-items:center;gap:16px}
+#ring{position:relative;width:136px;height:136px;flex:none}
+.rc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.rc b{font-size:32px;font-weight:800;line-height:1}.rc span{font-size:12px;color:var(--mu)}
+.mr{display:flex;justify-content:space-between;font-size:14px}
+.bar{height:7px;border-radius:4px;background:var(--c2);overflow:hidden;margin:3px 0 9px}.bar i{display:block;height:100%;border-radius:4px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;border-top:1px solid var(--b)}
+.mh{display:flex;justify-content:space-between;margin-top:12px}.mh+.row{border-top:0}
+.x{border:0;background:none;color:var(--mu);padding:4px 9px;font-size:18px}
+.ch{border-radius:999px;padding:7px 13px;font-size:14px;margin:0 6px 6px 0}
+.st{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.st div{background:var(--c2);border-radius:16px;padding:10px 6px;text-align:center}
+.st b{display:block;font-size:22px;font-weight:800}.st span{font-size:12px;color:var(--mu)}
+.hide{display:none!important}
 svg{width:100%;height:auto;display:block}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));background:rgba(15,16,19,.88);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-top:1px solid var(--b)}
+nav button{flex:1;background:none;border:0;color:var(--mu);font-size:11px;padding:2px}
+nav button span{display:block;font-size:23px;line-height:1.2}nav button.on{color:var(--a)}
+#rt{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(82px + env(safe-area-inset-bottom,0px));z-index:6;display:flex;align-items:center;gap:10px;background:var(--a);color:#1a0b03;border-radius:999px;padding:8px 8px 8px 18px;font-weight:800;box-shadow:0 6px 24px rgba(0,0,0,.5)}
+#rt button{background:rgba(0,0,0,.18);border:0;color:#1a0b03;border-radius:50%;width:32px;height:32px;padding:0}
+details summary{color:var(--mu);cursor:pointer;font-size:14px}
 </style></head><body><div class="w">
-<h1 style="margin:0 0 8px;font-size:22px">💪 kr1sspyGym</h1><div class="nav"><button id="pv">‹</button><b id="dt"></b><button id="nx">›</button></div>
-<div class="tabs"><button id="t1" class="on">Питание</button><button id="t2">Зал</button><button id="t3">Тело</button><button id="t4">Данные</button></div>
+<header><div><small>kr1sspyGym</small><h1 id="dt"></h1></div><div><button class="i" id="pv">‹</button><button class="i" id="nx">›</button></div></header>
 
 <div id="v1">
-<div class="card"><h2>Итого за день</h2>
-<div class="big" id="left"></div><div class="mu" id="leftl"></div><div style="height:10px"></div>
-<div id="bars"></div><div class="mu" id="wk"></div>
-<details><summary>Мои цели</summary><div class="g g4" style="margin-top:8px">
-<div><label>Ккал</label><input id="gk" type="number" inputmode="numeric"></div>
-<div><label>Белки, г</label><input id="gp" type="number" inputmode="numeric"></div>
-<div><label>Жиры, г</label><input id="gf" type="number" inputmode="numeric"></div>
-<div><label>Углев., г</label><input id="gc" type="number" inputmode="numeric"></div></div></details></div>
-
-<div class="card"><h2>Добавить продукт</h2>
-<div class="g"><div><label>Название</label><input id="fn" list="fl" placeholder="Например, гречка варёная"></div>
-<datalist id="fl"></datalist>
-<div class="g g4"><div><label>Ккал/100 г</label><input id="fk" type="number" inputmode="decimal"></div>
-<div><label>Б/100 г</label><input id="fp" type="number" inputmode="decimal"></div>
-<div><label>Ж/100 г</label><input id="ff" type="number" inputmode="decimal"></div>
-<div><label>У/100 г</label><input id="fc" type="number" inputmode="decimal"></div></div>
-<div class="g g2"><div><label>Вес порции, г</label><input id="fg" type="number" inputmode="decimal" value="100"></div>
-<div style="align-self:end"><button class="pr" id="fa" style="width:100%">Добавить</button></div></div></div>
-<div class="mu" style="margin-top:8px">Продукты запоминаются: в следующий раз выберите название, и значения подставятся сами.</div></div>
-
-<div class="card"><h2>Съедено</h2><div id="fd"></div><button id="cy" style="margin-top:8px;width:100%">Скопировать вчерашний день</button></div>
+<div class="c"><div class="fl"><div id="ring"></div><div style="flex:1" id="mac"></div></div></div>
+<div class="c"><h2 class="h">Вода</h2><div class="mr"><b id="wt"></b><span class="mu" id="wl"></span></div><div class="bar" style="height:10px;margin:8px 0 12px"><i id="wb" style="background:var(--p);width:0"></i></div>
+<div class="g g3"><button data-w="250">+250 мл</button><button data-w="500">+500 мл</button><button data-w="-250">−250 мл</button></div></div>
+<div class="c"><h2 class="h">Калории за неделю</h2><div id="wk"></div></div>
+<div class="c"><h2 class="h">Добавить еду</h2>
+<div id="rc"></div>
+<div class="g"><div class="g2"><div><label>Приём пищи</label><select id="fm"><option>Завтрак</option><option>Обед</option><option>Ужин</option><option>Перекус</option></select></div><div><label>Вес порции, г</label><input id="fg" type="number" inputmode="decimal" value="100"></div></div>
+<div><label>Название</label><input id="fn" list="fl" placeholder="Например, гречка варёная"></div><datalist id="fl"></datalist>
+<div class="g g4"><div><label>Ккал/100 г</label><input id="fk" type="number" inputmode="decimal"></div><div><label>Белки</label><input id="fp" type="number" inputmode="decimal"></div><div><label>Жиры</label><input id="ff" type="number" inputmode="decimal"></div><div><label>Углев.</label><input id="fc" type="number" inputmode="decimal"></div></div>
+<button class="pr" id="fa">Добавить</button></div></div>
+<div class="c"><h2 class="h">Съедено</h2><div id="fd"></div><button id="cy" style="width:100%;margin-top:12px">Скопировать вчерашний день</button></div>
 </div>
 
 <div id="v2" class="hide">
-<div class="card"><h2>Записать подход</h2>
-<div class="g"><div><label>Упражнение</label><input id="en" list="el" placeholder="Например, жим лёжа"></div><datalist id="el"></datalist>
-<div class="g g3"><div><label>Вес, кг</label><input id="ew" type="number" inputmode="decimal"></div>
-<div><label>Повторы</label><input id="er" type="number" inputmode="numeric"></div>
-<div><label>Подходов</label><input id="es" type="number" inputmode="numeric" value="1"></div></div>
-<button class="pr" id="ea">Добавить</button></div></div>
-
-<div class="card"><h2>Таймер отдыха</h2><div class="big" id="tm" style="text-align:center">0:00</div><div class="g g4" style="margin-top:10px"><button data-t="60">1:00</button><button data-t="90">1:30</button><button data-t="120">2:00</button><button data-t="180">3:00</button></div></div>
-<div class="card"><h2>Тренировка за день</h2><div id="wd"></div><div class="g g2" style="margin-top:8px"><input id="tn" placeholder="Название шаблона"><button id="ts">Сохранить шаблон</button></div></div>
-<div class="card"><h2>Шаблоны</h2><div id="tl"></div></div>
-
-<div class="card"><h2>Прогресс</h2>
-<select id="ps"></select><div style="height:10px"></div><div id="pg"></div></div>
+<div class="c"><div class="st" id="gs"></div></div>
+<div class="c"><h2 class="h">Записать подход</h2><div class="g">
+<div><label>Упражнение</label><input id="en" list="el" placeholder="Например, жим лёжа"></div><datalist id="el"></datalist>
+<div class="g g3"><div><label>Вес, кг</label><input id="ew" type="number" inputmode="decimal"></div><div><label>Повторы</label><input id="er" type="number" inputmode="numeric"></div><div><label>Подходов</label><input id="es" type="number" inputmode="numeric" value="1"></div></div>
+<div><label>Таймер отдыха после подхода</label><select id="rs"><option value="0">Выключен</option><option value="60">1:00</option><option value="90">1:30</option><option value="120">2:00</option><option value="180">3:00</option></select></div>
+<button class="pr" id="ea">Добавить подход</button></div></div>
+<div class="c"><h2 class="h">Тренировка дня</h2><div id="wd"></div>
+<div class="g g2" style="margin-top:10px"><input id="tn" placeholder="Название шаблона"><button id="ts">Сохранить шаблон</button></div></div>
+<div class="c"><h2 class="h">Шаблоны</h2><div id="tl"></div></div>
+<div class="c"><h2 class="h">Прогресс</h2><select id="ps"></select><div style="height:10px"></div><div id="pg"></div></div>
 </div>
 
-<div id="v3" class="hide"><div class="card"><h2>Вес тела</h2><div class="g g2"><div><label>Вес, кг</label><input id="bw" type="number" inputmode="decimal"></div><div style="align-self:end"><button class="pr" id="ba" style="width:100%">Записать</button></div></div></div><div class="card"><h2>Динамика</h2><div id="bg"></div></div></div>
-<div id="v4" class="hide"><div class="card"><h2>Резервная копия</h2><div class="mu" style="margin-bottom:8px">Нажмите «Показать копию», скопируйте текст и сохраните в заметках. Чтобы восстановить данные, вставьте текст и нажмите «Загрузить».</div><textarea id="bk" rows="7"></textarea><div class="g g2" style="margin-top:8px"><button id="be">Показать копию</button><button class="pr" id="bi">Загрузить</button></div></div></div>
-<div class="mu" style="text-align:center;margin-top:16px">Данные хранятся только в этом браузере.</div>
+<div id="v3" class="hide">
+<div class="c"><h2 class="h">Вес тела</h2><div class="g g2"><div><label>Вес, кг</label><input id="bw" type="number" inputmode="decimal"></div><div style="align-self:end"><button class="pr" id="ba" style="width:100%">Записать</button></div></div></div>
+<div class="c"><h2 class="h">Динамика</h2><div id="bg"></div></div>
 </div>
+
+<div id="v4" class="hide">
+<div class="c"><h2 class="h">Рассчитать мои цели</h2><div class="g">
+<div class="g g2"><div><label>Пол</label><select id="ps2"><option value="m">Мужской</option><option value="f">Женский</option></select></div><div><label>Возраст</label><input id="pa" type="number" inputmode="numeric"></div></div>
+<div class="g g2"><div><label>Рост, см</label><input id="ph" type="number" inputmode="decimal"></div><div><label>Вес, кг</label><input id="pw" type="number" inputmode="decimal"></div></div>
+<div><label>Активность</label><select id="px"><option value="1.2">Почти без нагрузки</option><option value="1.375">1–2 тренировки в неделю</option><option value="1.55">3–4 тренировки в неделю</option><option value="1.725">5–6 тренировок в неделю</option></select></div>
+<div><label>Цель</label><select id="pg2"><option value="0.85">Похудеть</option><option value="1">Держать вес</option><option value="1.1">Набрать массу</option></select></div>
+<button class="pr" id="pc">Рассчитать и применить</button><div class="mu" id="pr2"></div></div></div>
+<div class="c"><h2 class="h">Цели вручную</h2><div class="g g4">
+<div><label>Ккал</label><input id="gk" type="number" inputmode="numeric"></div><div><label>Белки</label><input id="gp" type="number" inputmode="numeric"></div><div><label>Жиры</label><input id="gf" type="number" inputmode="numeric"></div><div><label>Углев.</label><input id="gc" type="number" inputmode="numeric"></div></div>
+<div style="margin-top:8px"><label>Вода, мл</label><input id="gw" type="number" inputmode="numeric"></div></div>
+<div class="c"><h2 class="h">Резервная копия</h2><div class="mu" style="margin-bottom:8px">Нажмите «Показать», скопируйте текст в заметки. Чтобы восстановить, вставьте текст и нажмите «Загрузить».</div><textarea id="bk" rows="5"></textarea><div class="g g2" style="margin-top:8px"><button id="be">Показать</button><button class="pr" id="bi">Загрузить</button></div></div>
+</div>
+</div>
+
+<div id="rt" class="hide"><span>Отдых <span id="rtt"></span></span><button id="rtx">✕</button></div>
+<nav><button data-t="1" class="on"><span>🍽</span>Питание</button><button data-t="2"><span>🏋️</span>Зал</button><button data-t="3"><span>⚖️</span>Тело</button><button data-t="4"><span>⚙️</span>Профиль</button></nav>
+
 <script>
-const $=id=>document.getElementById(id);
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const R=n=>Math.round(n*10)/10;
-let S={goals:{k:2200,p:150,f:70,c:250},food:{},foods:{},sets:[],body:{},tpl:[]};
-try{const j=localStorage.getItem("kbzhu-gym");if(j)S=Object.assign(S,JSON.parse(j))}catch(e){}
+const $=i=>document.getElementById(i),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])),R=n=>Math.round(n*10)/10,V=()=>navigator.vibrate&&navigator.vibrate(12);
+let S={goals:{k:2200,p:150,f:70,c:250,w:2500},food:{},foods:{},sets:[],body:{},tpl:[],water:{},prof:{},rest:90};
+try{const j=JSON.parse(localStorage.getItem("kbzhu-gym"));if(j)S=Object.assign(S,j)}catch(e){}
 const save=()=>{try{localStorage.setItem("kbzhu-gym",JSON.stringify(S))}catch(e){}};
-const iso=d=>{const z=new Date(d.getTime()-d.getTimezoneOffset()*6e4);return z.toISOString().slice(0,10)};
-let cur=iso(new Date());
-const fmt=d=>d===iso(new Date())?"Сегодня":new Date(d+"T12:00").toLocaleDateString("ru-RU",{weekday:"short",day:"numeric",month:"long"});
-const shift=n=>{const d=new Date(cur+"T12:00");d.setDate(d.getDate()+n);cur=iso(d);render()};
-$("pv").onclick=()=>shift(-1);$("nx").onclick=()=>shift(1);
-function tab(n){for(let i=1;i<=4;i++){$("v"+i).classList.toggle("hide",n!==i);$("t"+i).classList.toggle("on",n===i)}}
-for(let i=1;i<=4;i++)$("t"+i).onclick=()=>tab(i);
-["k","p","f","c"].forEach(k=>{$("g"+k).value=S.goals[k];$("g"+k).onchange=e=>{S.goals[k]=+e.target.value||0;save();render()}});
-$("fn").onchange=()=>{const f=S.foods[$("fn").value.trim()];if(f){$("fk").value=f.k;$("fp").value=f.p;$("ff").value=f.f;$("fc").value=f.c}};
-$("fa").onclick=()=>{
- const n=$("fn").value.trim(),g=+$("fg").value;
- if(!n||!g){$("fn").focus();return}
- const v={k:+$("fk").value||0,p:+$("fp").value||0,f:+$("ff").value||0,c:+$("fc").value||0};
- S.foods[n]=v;
- (S.food[cur]=S.food[cur]||[]).push({n,g,k:R(v.k*g/100),p:R(v.p*g/100),f:R(v.f*g/100),c:R(v.c*g/100)});
- ["fn","fk","fp","ff","fc"].forEach(i=>$(i).value="");$("fg").value=100;save();render()};
-$("ea").onclick=()=>{
- const ex=$("en").value.trim(),w=+$("ew").value,r=+$("er").value,s=Math.max(1,+$("es").value||1);
- if(!ex||!r){$(ex?"er":"en").focus();return}
- S.sets.push({d:cur,ex,w,r,s});$("ew").value="";$("er").value="";save();$("ps").value=ex;render()};
-$("ps").onchange=render;
-const e1=x=>x.w*(1+x.r/30);
-function render(){
- $("dt").textContent=fmt(cur);
- const L=S.food[cur]||[],T=L.reduce((a,x)=>({k:a.k+x.k,p:a.p+x.p,f:a.f+x.f,c:a.c+x.c}),{k:0,p:0,f:0,c:0});
- const rem=S.goals.k-T.k;
- $("left").textContent=Math.abs(Math.round(rem))+" ккал";
- $("leftl").textContent=(rem>=0?"осталось до цели · съедено ":"перебор · съедено ")+Math.round(T.k)+" из "+S.goals.k;
- const B=[["Калории","k","var(--ac)","ккал"],["Белки","p","var(--p)","г"],["Жиры","f","var(--f)","г"],["Углеводы","c","var(--c)","г"]];
- $("bars").innerHTML=B.map(([n,k,col,u])=>`<div style="display:flex;justify-content:space-between"><span>${n}</span><span class="mu">${Math.round(T[k])} / ${S.goals[k]} ${u}</span></div><div class="bar"><i style="width:${Math.min(100,S.goals[k]?T[k]/S.goals[k]*100:0)}%;background:${col}"></i></div>`).join("");
+const iso=d=>new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,10);
+const addD=(s,n)=>{const d=new Date(s+"T12:00");d.setDate(d.getDate()+n);return iso(d)};
+const today=iso(new Date());let cur=today;
+const e1=x=>x.w*(1+x.r/30),sm=(a,k)=>a.reduce((t,x)=>t+x[k],0),dl=(d,o)=>new Date(d+"T12:00").toLocaleDateString("ru-RU",o);
+const line=(P,col,u)=>{if(P.length<2)return"";const mn=Math.min(...P.map(x=>x.v)),mx=Math.max(...P.map(x=>x.v)),sp=(mx-mn)||1,X=i=>16+i*(288/(P.length-1)),Y=v=>104-(v-mn)/sp*84,pt=P.map((x,i)=>X(i)+","+Y(x.v)).join(" ");return `<svg viewBox="0 0 320 138"><polygon points="16,120 ${pt} 304,120" fill="${col}" opacity=".13"/><polyline points="${pt}" fill="none" stroke="${col}" stroke-width="3" stroke-linejoin="round"/>${P.map((x,i)=>`<circle cx="${X(i)}" cy="${Y(x.v)}" r="4" fill="${col}"/>`).join("")}<text x="16" y="12" font-size="11" fill="#9a9aa3">макс. ${R(mx)} ${u}</text><text x="16" y="136" font-size="10" fill="#9a9aa3">${P[0].d.slice(5)}</text><text x="304" y="136" font-size="10" text-anchor="end" fill="#9a9aa3">${P[P.length-1].d.slice(5)}</text></svg>`};
+const stats=a=>`<div class="st">${a.map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join("")}</div>`;
+
+function show(n){for(let i=1;i<=4;i++)$("v"+i).classList.toggle("hide",i!==n);document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",+b.dataset.t===n));scrollTo(0,0)}
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{V();show(+b.dataset.t)});
+$("pv").onclick=()=>{cur=addD(cur,-1);render()};$("nx").onclick=()=>{cur=addD(cur,1);render()};
+
+/* еда */
+function fill(n){const f=S.foods[n];$("fn").value=n;if(f){$("fk").value=f.k;$("fp").value=f.p;$("ff").value=f.f;$("fc").value=f.c;$("fg").value=f.g||100}}
+$("fn").onchange=()=>fill($("fn").value.trim());
+$("rc").onclick=e=>{const n=e.target.dataset.n;if(n)fill(n)};
+$("fa").onclick=()=>{const n=$("fn").value.trim(),g=+$("fg").value;if(!n||!g){$("fn").focus();return}
+ const v={k:+$("fk").value||0,p:+$("fp").value||0,f:+$("ff").value||0,c:+$("fc").value||0,g};
+ delete S.foods[n];S.foods[n]=v;
+ (S.food[cur]=S.food[cur]||[]).push({n,g,m:$("fm").value,k:R(v.k*g/100),p:R(v.p*g/100),f:R(v.f*g/100),c:R(v.c*g/100)});
+ ["fn","fk","fp","ff","fc"].forEach(i=>$(i).value="");$("fg").value=100;V();save();render()};
+$("fd").onclick=e=>{const i=e.target.dataset.f;if(i!=null){S.food[cur].splice(+i,1);save();render()}};
+$("cy").onclick=()=>{const p=S.food[addD(cur,-1)]||[];if(!p.length)return;S.food[cur]=(S.food[cur]||[]).concat(p.map(x=>({...x})));save();render()};
+document.querySelectorAll("[data-w]").forEach(b=>b.onclick=()=>{S.water[cur]=Math.max(0,(S.water[cur]||0)+ +b.dataset.w);V();save();render()});
+const hr=new Date().getHours();$("fm").value=hr<11?"Завтрак":hr<16?"Обед":hr<21?"Ужин":"Перекус";
+
+function rFood(){
+ const L=S.food[cur]||[],T={k:sm(L,"k"),p:sm(L,"p"),f:sm(L,"f"),c:sm(L,"c")},g=S.goals,rem=g.k-T.k,p=Math.min(1,g.k?T.k/g.k:0);
+ $("ring").innerHTML=`<svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#22252c" stroke-width="12"/><circle cx="60" cy="60" r="52" fill="none" stroke="${rem<0?"#ff4d4d":"#ff6a2b"}" stroke-width="12" stroke-linecap="round" stroke-dasharray="${p*326.7} 400" transform="rotate(-90 60 60)"/></svg><div class="rc"><b>${Math.abs(Math.round(rem))}</b><span>${rem<0?"ккал сверх цели":"ккал осталось"}</span></div>`;
+ $("mac").innerHTML=[["Белки","p","--p"],["Жиры","f","--f"],["Углеводы","c","--k"]].map(([n,k,v])=>`<div class="mr"><span>${n}</span><span class="mu">${Math.round(T[k])} из ${g[k]} г</span></div><div class="bar"><i style="width:${Math.min(100,g[k]?T[k]/g[k]*100:0)}%;background:var(${v})"></i></div>`).join("")+`<div class="mu">Съедено ${Math.round(T.k)} из ${g.k} ккал</div>`;
+ const w=S.water[cur]||0,gw=g.w||2500;$("wt").textContent=w+" мл";$("wl").textContent="цель "+gw+" мл";$("wb").style.width=Math.min(100,w/gw*100)+"%";
+ const D=[...Array(7)].map((_,i)=>{const d=addD(cur,i-6);return{d,k:sm(S.food[d]||[],"k")}}),mx=Math.max(g.k*1.15,...D.map(x=>x.k)),gy=80-g.k/mx*70;
+ $("wk").innerHTML=`<svg viewBox="0 0 280 100">`+D.map((x,i)=>{const h=x.k/mx*70;return `<rect x="${i*40+6}" y="${80-h}" width="28" height="${h}" rx="8" fill="${x.k>g.k?"#ff4d4d":x.d===cur?"#ff6a2b":"#2f343e"}"/><text x="${i*40+20}" y="96" font-size="10" text-anchor="middle" fill="#9a9aa3">${dl(x.d,{weekday:"short"})}</text>`}).join("")+`<line x1="0" x2="280" y1="${gy}" y2="${gy}" stroke="#9a9aa3" stroke-dasharray="3 4"/></svg>`;
  $("fl").innerHTML=Object.keys(S.foods).map(n=>`<option value="${esc(n)}">`).join("");
- $("fd").innerHTML=L.length?L.map((x,i)=>`<div class="row"><div><div>${esc(x.n)} · ${x.g} г</div><div class="mu">${Math.round(x.k)} ккал · Б ${x.p} · Ж ${x.f} · У ${x.c}</div></div><button class="x" data-f="${i}">✕</button></div>`).join(""):'<div class="mu">Пока ничего не добавлено.</div>';
- document.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>{S.food[cur].splice(+b.dataset.f,1);save();render()});
- const exs=[...new Set(S.sets.map(s=>s.ex))];
- $("el").innerHTML=exs.map(n=>`<option value="${esc(n)}">`).join("");
- const sel=$("ps").value;
- $("ps").innerHTML=exs.length?exs.map(n=>`<option${n===sel?" selected":""}>${esc(n)}</option>`).join(""):"<option>Нет данных</option>";
- const W=S.sets.map((s,i)=>({...s,i})).filter(s=>s.d===cur);
- $("wd").innerHTML=W.length?W.map(s=>`<div class="row"><div>${esc(s.ex)}<div class="mu">${s.s} × ${s.r} повт. · ${s.w} кг · объём ${Math.round(s.s*s.r*s.w)} кг</div></div><button class="x" data-w="${s.i}">✕</button></div>`).join(""):'<div class="mu">В этот день подходов нет.</div>';
- document.querySelectorAll("[data-w]").forEach(b=>b.onclick=()=>{S.sets.splice(+b.dataset.w,1);save();render()});
- progress($("ps").value)}
-function progress(ex){
- const A=S.sets.filter(s=>s.ex===ex);
- if(!A.length){$("pg").innerHTML='<div class="mu">Запишите первый подход, и здесь появится график.</div>';return}
- const by={};A.forEach(s=>{(by[s.d]=by[s.d]||[]).push(s)});
- const D=Object.keys(by).sort().map(d=>{const a=by[d];return{d,w:Math.max(...a.map(x=>x.w)),e:Math.max(...a.map(e1)),v:a.reduce((t,x)=>t+x.w*x.r*x.s,0)}});
- const pr=Math.max(...D.map(x=>x.w)),be=Math.max(...D.map(x=>x.e)),last=D[D.length-1],first=D[0];
- const dl=last.w-first.w;
- let svg="";
- if(D.length>1){
-  const P=D.slice(-20),mn=Math.min(...P.map(x=>x.e)),mx=Math.max(...P.map(x=>x.e)),sp=(mx-mn)||1;
-  const X=i=>20+i*(280/(P.length-1)),Y=v=>110-(v-mn)/sp*90;
-  svg=`<svg viewBox="0 0 320 140"><polyline fill="none" stroke="var(--ac)" stroke-width="2.5" points="${P.map((x,i)=>X(i)+","+Y(x.e)).join(" ")}"/>${P.map((x,i)=>`<circle cx="${X(i)}" cy="${Y(x.e)}" r="3.5" fill="var(--ac)"/>`).join("")}<text x="20" y="10" font-size="10" fill="var(--mu)">макс. ${R(mx)} кг</text><text x="20" y="134" font-size="10" fill="var(--mu)">${P[0].d.slice(5)}</text><text x="300" y="134" font-size="10" text-anchor="end" fill="var(--mu)">${P[P.length-1].d.slice(5)}</text></svg><div class="mu" style="text-align:center;margin-bottom:8px">Расчётный разовый максимум по дням, кг</div>`}
- $("pg").innerHTML=`<div class="st"><div><b>${pr} кг</b><span class="mu">рекорд веса</span></div><div><b>${R(be)} кг</b><span class="mu">расч. 1ПМ</span></div><div><b>${dl>0?"+":""}${R(dl)} кг</b><span class="mu">с первого дня</span></div></div>${svg}`+
- D.slice().reverse().slice(0,8).map(x=>`<div class="row"><span>${new Date(x.d+"T12:00").toLocaleDateString("ru-RU",{day:"numeric",month:"short"})}</span><span class="mu">топ ${x.w} кг · объём ${Math.round(x.v)} кг</span></div>`).join("")}
-render();
-let tI=null,tE=0;
-function tick(){const s=Math.max(0,Math.round((tE-Date.now())/1000));$("tm").textContent=Math.floor(s/60)+":"+String(s%60).padStart(2,"0");if(!s){clearInterval(tI);tI=null;try{navigator.vibrate&&navigator.vibrate([300,150,300]);const a=new (window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator();o.connect(a.destination);o.start();o.stop(a.currentTime+.4)}catch(e){}}}
-document.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{clearInterval(tI);tE=Date.now()+(+b.dataset.t)*1000;tick();tI=setInterval(tick,250)});
-$("ts").onclick=()=>{const W=S.sets.filter(s=>s.d===cur);if(!W.length){$("tn").focus();return}const n=$("tn").value.trim()||"Тренировка "+(S.tpl.length+1);S.tpl.push({n,it:W.map(({ex,w,r,s})=>({ex,w,r,s}))});$("tn").value="";save();render()};
-$("ba").onclick=()=>{const v=+$("bw").value;if(!v)return;S.body[cur]=v;$("bw").value="";save();render()};
-$("cy").onclick=()=>{const d=new Date(cur+"T12:00");d.setDate(d.getDate()-1);const p=S.food[iso(d)]||[];if(!p.length)return;S.food[cur]=(S.food[cur]||[]).concat(p.map(x=>({...x})));save();render()};
-$("be").onclick=()=>{$("bk").value=JSON.stringify(S);$("bk").select()};
-$("bi").onclick=()=>{try{const j=JSON.parse($("bk").value);if(!j||typeof j!=="object")throw 0;S=Object.assign({goals:S.goals,food:{},foods:{},sets:[],body:{},tpl:[]},j);save();["k","p","f","c"].forEach(k=>$("g"+k).value=S.goals[k]);render();$("bk").value="Готово: данные загружены"}catch(e){$("bk").value="Не удалось прочитать копию"}};
-function extra(){
- let sum=0,n=0;for(let i=0;i<7;i++){const d=new Date(cur+"T12:00");d.setDate(d.getDate()-i);const L=S.food[iso(d)]||[];if(L.length){n++;sum+=L.reduce((a,x)=>a+x.k,0)}}
- $("wk").textContent=n?"Среднее за 7 дней: "+Math.round(sum/n)+" ккал в день (дней с записями: "+n+")":"";
+ $("rc").innerHTML=Object.keys(S.foods).slice(-8).reverse().map(n=>`<button class="ch" data-n="${esc(n)}">${esc(n)}</button>`).join("");
+ $("fd").innerHTML=L.length?["Завтрак","Обед","Ужин","Перекус"].map(m=>{const a=L.map((x,i)=>({...x,i})).filter(x=>(x.m||"Перекус")===m);return a.length?`<div class="mh"><b>${m}</b><span class="mu">${Math.round(sm(a,"k"))} ккал</span></div>`+a.map(x=>`<div class="row"><div>${esc(x.n)}, ${x.g} г<div class="mu">${Math.round(x.k)} ккал, Б ${x.p}, Ж ${x.f}, У ${x.c}</div></div><button class="x" data-f="${x.i}">✕</button></div>`).join(""):""}).join(""):'<div class="mu">Пока пусто. Добавьте первый продукт.</div>'}
+
+/* зал */
+let tE=0,tI;
+function rest(s){clearInterval(tI);tE=Date.now()+s*1000;$("rt").classList.remove("hide");tk();tI=setInterval(tk,250)}
+function tk(){const s=Math.max(0,Math.round((tE-Date.now())/1000));$("rtt").textContent=Math.floor(s/60)+":"+String(s%60).padStart(2,"0");if(!s){clearInterval(tI);navigator.vibrate&&navigator.vibrate([300,150,300]);try{const a=new(window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator();o.connect(a.destination);o.start();o.stop(a.currentTime+.4)}catch(e){}setTimeout(()=>$("rt").classList.add("hide"),2500)}}
+$("rtx").onclick=()=>{clearInterval(tI);$("rt").classList.add("hide")};
+$("rs").value=S.rest;$("rs").onchange=()=>{S.rest=+$("rs").value;save()};
+const afterSet=()=>{V();save();S.rest&&rest(S.rest);render()};
+$("en").onchange=()=>{const l=[...S.sets].reverse().find(s=>s.ex===$("en").value.trim());if(l){$("ew").value=l.w;$("er").value=l.r;$("es").value=l.s}};
+$("ea").onclick=()=>{const ex=$("en").value.trim(),w=+$("ew").value,r=+$("er").value,s=Math.max(1,+$("es").value||1);if(!ex||!r){$(ex?"er":"en").focus();return}
+ S.sets.push({d:cur,ex,w,r,s});$("ps").value=ex;afterSet()};
+$("wd").onclick=e=>{const d=e.target.dataset;if(d.w!=null){S.sets.splice(+d.w,1);save();render()}if(d.r!=null){S.sets.push({...S.sets[+d.r],d:cur});afterSet()}};
+$("ts").onclick=()=>{const W=S.sets.filter(s=>s.d===cur);if(!W.length){$("tn").focus();return}S.tpl.push({n:$("tn").value.trim()||"Тренировка "+(S.tpl.length+1),it:W.map(({ex,w,r,s})=>({ex,w,r,s}))});$("tn").value="";save();render()};
+$("tl").onclick=e=>{const d=e.target.dataset;if(d.a!=null){S.tpl[+d.a].it.forEach(x=>S.sets.push({d:cur,...x}));save();render()}if(d.d!=null){S.tpl.splice(+d.d,1);save();render()}};
+$("ps").onchange=render;
+function rGym(){
+ const W=S.sets.map((s,i)=>({...s,i})),A=W.filter(s=>s.d===cur),ds=new Set(S.sets.map(s=>s.d));
+ const wk=[...ds].filter(d=>d>addD(today,-7)&&d<=today).length;let st=0,d=ds.has(today)?today:addD(today,-1);while(ds.has(d)){st++;d=addD(d,-1)}
+ $("gs").outerHTML=`<div class="st" id="gs">${[[wk,"тренировок за 7 дней"],[st,"дней подряд"],[Math.round(A.reduce((t,x)=>t+x.w*x.r*x.s,0)),"кг объём за день"]].map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join("")}</div>`;
+ const exs=[...new Set(S.sets.map(s=>s.ex))];$("el").innerHTML=exs.map(n=>`<option value="${esc(n)}">`).join("");
+ const sel=$("ps").value;$("ps").innerHTML=exs.length?exs.map(n=>`<option${n===sel?" selected":""}>${esc(n)}</option>`).join(""):"<option>Нет данных</option>";
+ $("wd").innerHTML=A.length?A.map(x=>{const pr=W.some(y=>y.ex===x.ex&&y.i<x.i)&&!W.some(y=>y.ex===x.ex&&y.i<x.i&&e1(y)>=e1(x));return `<div class="row"><div>${pr?"🏆 ":""}${esc(x.ex)}<div class="mu">${x.s}×${x.r}, ${x.w} кг${pr?", новый рекорд":""}</div></div><div style="white-space:nowrap"><button class="x" data-r="${x.i}">↻</button><button class="x" data-w="${x.i}">✕</button></div></div>`}).join(""):'<div class="mu">В этот день подходов нет. Запишите первый или добавьте шаблон.</div>';
  $("tl").innerHTML=S.tpl.length?S.tpl.map((t,i)=>`<div class="row"><div>${esc(t.n)}<div class="mu">${esc(t.it.map(x=>x.ex).join(", "))}</div></div><div style="white-space:nowrap"><button data-a="${i}">В этот день</button><button class="x" data-d="${i}">✕</button></div></div>`).join(""):'<div class="mu">Сохраните тренировку дня, чтобы повторять её одним нажатием.</div>';
- document.querySelectorAll("[data-a]").forEach(b=>b.onclick=()=>{S.tpl[+b.dataset.a].it.forEach(x=>S.sets.push({d:cur,...x}));save();render()});
- document.querySelectorAll("[data-d]").forEach(b=>b.onclick=()=>{S.tpl.splice(+b.dataset.d,1);save();render()});
- const B=Object.keys(S.body).sort();
- if(!B.length){$("bg").innerHTML='<div class="mu">Запишите вес, и появится график.</div>';return}
- const P=B.slice(-30).map(d=>({d,v:S.body[d]})),last=P[P.length-1].v,dl=last-P[0].v;let svg="";
- if(P.length>1){const mn=Math.min(...P.map(x=>x.v)),mx=Math.max(...P.map(x=>x.v)),sp=(mx-mn)||1,X=i=>20+i*(280/(P.length-1)),Y=v=>110-(v-mn)/sp*90;svg=`<svg viewBox="0 0 320 140"><polyline fill="none" stroke="var(--p)" stroke-width="2.5" points="${P.map((x,i)=>X(i)+","+Y(x.v)).join(" ")}"/>${P.map((x,i)=>`<circle cx="${X(i)}" cy="${Y(x.v)}" r="3.5" fill="var(--p)"/>`).join("")}<text x="20" y="10" font-size="10" fill="var(--mu)">макс. ${mx} кг</text><text x="20" y="134" font-size="10" fill="var(--mu)">${P[0].d.slice(5)}</text><text x="300" y="134" font-size="10" text-anchor="end" fill="var(--mu)">${P[P.length-1].d.slice(5)}</text></svg>`}
- $("bg").innerHTML=`<div class="st"><div><b>${last} кг</b><span class="mu">сейчас</span></div><div><b>${dl>0?"+":""}${R(dl)} кг</b><span class="mu">за период</span></div><div><b>${R(P.reduce((a,x)=>a+x.v,0)/P.length)} кг</b><span class="mu">среднее</span></div></div>`+svg+P.slice().reverse().slice(0,8).map(x=>`<div class="row"><span>${new Date(x.d+"T12:00").toLocaleDateString("ru-RU",{day:"numeric",month:"short"})}</span><span class="mu">${x.v} кг</span></div>`).join("")}
-const _r=render;render=function(){_r();extra()};
+ const ex=$("ps").value,E=S.sets.filter(s=>s.ex===ex);
+ if(!E.length){$("pg").innerHTML='<div class="mu">Запишите подход, и здесь появится график.</div>';return}
+ const by={};E.forEach(s=>(by[s.d]=by[s.d]||[]).push(s));
+ const P=Object.keys(by).sort().map(d=>({d,v:Math.max(...by[d].map(e1)),w:Math.max(...by[d].map(x=>x.w)),vol:by[d].reduce((t,x)=>t+x.w*x.r*x.s,0)})),L=P[P.length-1];
+ $("pg").innerHTML=stats([[Math.max(...P.map(x=>x.w))+" кг","рекорд веса"],[R(Math.max(...P.map(x=>x.v)))+" кг","расчётный 1ПМ"],[(L.w-P[0].w>0?"+":"")+R(L.w-P[0].w)+" кг","с первого дня"]])+line(P.slice(-20),"#ff6a2b","кг")+`<div class="mu" style="text-align:center;margin-bottom:6px">Расчётный разовый максимум по дням</div>`+P.slice().reverse().slice(0,6).map(x=>`<div class="row"><span>${dl(x.d,{day:"numeric",month:"short"})}</span><span class="mu">топ ${x.w} кг, объём ${Math.round(x.vol)} кг</span></div>`).join("")}
+
+/* тело */
+$("ba").onclick=()=>{const v=+$("bw").value;if(!v)return;S.body[cur]=v;$("bw").value="";V();save();render()};
+function rBody(){const B=Object.keys(S.body).sort();if(!B.length){$("bg").innerHTML='<div class="mu">Запишите вес, и появится график.</div>';return}
+ const P=B.slice(-30).map(d=>({d,v:S.body[d]})),l=P[P.length-1].v,h=S.prof.h,a=[[l+" кг","сейчас"],[(l-P[0].v>0?"+":"")+R(l-P[0].v)+" кг","за период"],[h?R(l/((h/100)**2)):R(P.reduce((t,x)=>t+x.v,0)/P.length),h?"индекс массы тела":"среднее, кг"]];
+ $("bg").innerHTML=stats(a)+line(P,"#7cc4ff","кг")+P.slice().reverse().slice(0,8).map(x=>`<div class="row"><span>${dl(x.d,{day:"numeric",month:"short"})}</span><span class="mu">${x.v} кг</span></div>`).join("")}
+
+/* профиль */
+const gf=()=>["k","p","f","c","w"].forEach(k=>$("g"+k).value=S.goals[k]||"");
+["k","p","f","c","w"].forEach(k=>$("g"+k).onchange=e=>{S.goals[k]=+e.target.value||0;save();render()});
+const P0=S.prof;if(P0.s){$("ps2").value=P0.s;$("pa").value=P0.a;$("ph").value=P0.h;$("pw").value=P0.w;$("px").value=P0.x;$("pg2").value=P0.g}gf();
+$("pc").onclick=()=>{const P={s:$("ps2").value,a:+$("pa").value,h:+$("ph").value,w:+$("pw").value,x:+$("px").value,g:+$("pg2").value};if(!P.a||!P.h||!P.w)return;S.prof=P;
+ const t=Math.round((10*P.w+6.25*P.h-5*P.a+(P.s==="m"?5:-161))*P.x*P.g),p=Math.round(P.w*2),f=Math.round(P.w*.9);
+ S.goals={k:t,p,f,c:Math.max(0,Math.round((t-p*4-f*9)/4)),w:Math.round(P.w*35/50)*50};save();gf();render();
+ $("pr2").textContent="Готово: "+t+" ккал, белки "+p+" г, жиры "+f+" г, углеводы "+S.goals.c+" г, вода "+S.goals.w+" мл. Формула Миффлина-Сан Жеора, это ориентир."};
+$("be").onclick=()=>{$("bk").value=JSON.stringify(S);$("bk").select()};
+$("bi").onclick=()=>{try{const j=JSON.parse($("bk").value);if(!j||typeof j!=="object")throw 0;S=Object.assign({goals:S.goals,food:{},foods:{},sets:[],body:{},tpl:[],water:{},prof:{},rest:90},j);save();gf();render();$("bk").value="Готово: данные загружены"}catch(e){$("bk").value="Не удалось прочитать копию"}};
+
+function render(){$("dt").textContent=cur===today?"Сегодня":dl(cur,{weekday:"long",day:"numeric",month:"long"});rFood();rGym();rBody()}
 render();
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
 </script></body></html>
