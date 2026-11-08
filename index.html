@@ -81,7 +81,7 @@ details summary{color:var(--mu);cursor:pointer;font-size:14px}
 <div class="c"><h2 class="h">Динамика</h2><div id="bg"></div></div>
 </div>
 
-<div id="v5" class="hide"><div class="c"><h2 class="h">Рецепты под ваши калории</h2><div class="g g2"><div><label>Приём пищи</label><select id="rm"><option>Завтрак</option><option>Обед</option><option>Ужин</option><option>Перекус</option></select></div><div><label>Ккал на порцию</label><input id="rk" type="number" inputmode="numeric"></div></div><div class="mu" id="rh" style="margin-top:8px"></div></div><div id="rl"></div></div>
+<div id="v5" class="hide"><div class="c" id="mn"></div><div class="c"><h2 class="h">Рецепты под ваши калории</h2><div class="g g2"><div><label>Приём пищи</label><select id="rm"><option>Завтрак</option><option>Обед</option><option>Ужин</option><option>Перекус</option></select></div><div><label>Ккал на порцию</label><input id="rk" type="number" inputmode="numeric"></div></div><div class="mu" id="rh" style="margin-top:8px"></div></div><div id="rl"></div></div>
 <div id="v4" class="hide">
 <div class="c"><h2 class="h">Рассчитать мои цели</h2><div class="g">
 <div class="g g2"><div><label>Пол</label><select id="ps2"><option value="m">Мужской</option><option value="f">Женский</option></select></div><div><label>Возраст</label><input id="pa" type="number" inputmode="numeric"></div></div>
@@ -111,7 +111,7 @@ const e1=x=>x.w*(1+x.r/30),sm=(a,k)=>a.reduce((t,x)=>t+x[k],0),dl=(d,o)=>new Dat
 const line=(P,col,u)=>{if(P.length<2)return"";const mn=Math.min(...P.map(x=>x.v)),mx=Math.max(...P.map(x=>x.v)),sp=(mx-mn)||1,X=i=>16+i*(288/(P.length-1)),Y=v=>104-(v-mn)/sp*84,pt=P.map((x,i)=>X(i)+","+Y(x.v)).join(" ");return `<svg viewBox="0 0 320 138"><polygon points="16,120 ${pt} 304,120" fill="${col}" opacity=".13"/><polyline points="${pt}" fill="none" stroke="${col}" stroke-width="3" stroke-linejoin="round"/>${P.map((x,i)=>`<circle cx="${X(i)}" cy="${Y(x.v)}" r="4" fill="${col}"/>`).join("")}<text x="16" y="12" font-size="11" fill="#9a9aa3">макс. ${R(mx)} ${u}</text><text x="16" y="136" font-size="10" fill="#9a9aa3">${P[0].d.slice(5)}</text><text x="304" y="136" font-size="10" text-anchor="end" fill="#9a9aa3">${P[P.length-1].d.slice(5)}</text></svg>`};
 const stats=a=>`<div class="st">${a.map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join("")}</div>`;
 
-function show(n){if(n===5)rRec();for(let i=1;i<=5;i++)$("v"+i).classList.toggle("hide",i!==n);document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",+b.dataset.t===n));scrollTo(0,0)}
+function show(n){if(n===5){rMenu();rRec()}for(let i=1;i<=5;i++)$("v"+i).classList.toggle("hide",i!==n);document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",+b.dataset.t===n));scrollTo(0,0)}
 document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{V();show(+b.dataset.t)});
 $("pv").onclick=()=>{cur=addD(cur,-1);render()};$("nx").onclick=()=>{cur=addD(cur,1);render()};
 
@@ -223,6 +223,12 @@ function rRec(){const m=$("rm").value,sh={"Завтрак":.25,"Обед":.35,"�
  $("rl").innerHTML=RC.map((r,j)=>({...r,j})).filter(r=>r.m===m).map(r=>({...r,x:Math.min(2.5,Math.max(.5,Math.round(t/r.k*20)/20))})).sort((a,b)=>Math.abs(a.k*a.x-t)-Math.abs(b.k*b.x-t)||b.p/b.k-a.p/a.k).map(r=>{const q=v=>R(v*r.x);return `<details class="c rcp"><summary>${esc(r.n)}<div class="mu">${r.x}× порции, ${Math.round(r.k*r.x)} ккал, Б ${q(r.p)}, Ж ${q(r.f)}, У ${q(r.c)}</div></summary><div style="margin-top:10px">${r.i.map(([n,a,u])=>`<div class="row"><span>${n}</span><span class="mu">${u==="шт"?Math.round(a*r.x*2)/2:(Math.round(a*r.x/5)*5||5)} ${u}</span></div>`).join("")}<p class="mu">${r.s}</p><button class="pr" style="width:100%" data-i="${r.j}" data-x="${r.x}">Добавить в этот день</button></div></details>`}).join("")}
 $("rm").value=$("fm").value;$("rm").onchange=()=>{rkE=0;rRec()};$("rk").oninput=()=>{rkE=1;rRec()};
 $("rl").onclick=e=>{const b=e.target.closest("[data-i]");if(!b)return;const r=RC[+b.dataset.i],x=+b.dataset.x;(S.food[cur]=S.food[cur]||[]).push({n:r.n,g:Math.round(rg(r)*x),m:r.m,k:R(r.k*x),p:R(r.p*x),f:R(r.f*x),c:R(r.c*x)});V();save();render();hint();b.textContent="Добавлено ✓"};
+let mS=0,MI=[];
+function rMenu(){const g=S.goals,sh=[["Завтрак",.25],["Обед",.35],["Ужин",.3],["Перекус",.1]],em={"Завтрак":"🌅","Обед":"🍲","Ужин":"🍽","Перекус":"🥜"},seed=+cur.replace(/-/g,"")+mS;
+ MI=sh.map(([m,f],a)=>{const L=RC.filter(r=>r.m===m),r=L[(seed*(a+3)+a)%L.length];return{...r,x:Math.min(2.5,Math.max(.5,Math.round(g.k*f/r.k*20)/20))}});
+ const T=k=>Math.round(MI.reduce((t,r)=>t+r[k]*r.x,0));
+ $("mn").innerHTML=`<h2 class="h">🍂 Меню на ${dl(cur,{day:"numeric",month:"long"})}</h2><div style="font-weight:800;font-size:17px">≈ ${T("k")} ккал | Б ${T("p")} г | Ж ${T("f")} г | У ${T("c")} г</div><div class="mu" style="margin:2px 0 8px">Цель дня: ${g.k} ккал. Полные рецепты ниже по приёмам пищи.</div>`+MI.map(r=>`<div class="row"><div>${em[r.m]} ${esc(r.n)}<div class="mu">${r.m}, ${r.x}× порции, ${Math.round(r.k*r.x)} ккал</div></div></div>`).join("")+`<div class="g g2" style="margin-top:10px"><button id="mx">Другое меню</button><button class="pr" id="ma">Добавить всё в день</button></div>`}
+$("mn").onclick=e=>{const b=e.target.closest("button");if(!b)return;if(b.id==="mx"){mS++;rMenu();return}if(b.id==="ma"){MI.forEach(r=>(S.food[cur]=S.food[cur]||[]).push({n:r.n,g:Math.round(rg(r)*r.x),m:r.m,k:R(r.k*r.x),p:R(r.p*r.x),f:R(r.f*r.x),c:R(r.c*r.x)}));V();save();render();hint();b.textContent="Добавлено ✓"}};
 function render(){$("dt").textContent=cur===today?"Сегодня":dl(cur,{weekday:"long",day:"numeric",month:"long"});rFood();rGym();rBody()}
 render();
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
